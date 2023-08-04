@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
+const coronaData = require("./coronaData.json");
 
-app.listen (5000,function(){
+app.get("/", function (req, res){
+  res.send(coronaData);
+});
+
+app.listen (5050,function(){
   console.log("Listening on localhost port 5050")
 })
