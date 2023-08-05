@@ -15,10 +15,18 @@ app.post("/autumn", function (req, res){
     });
 });
 
-app.get("/update", function (req, res){
+app.post("/update", function (req, res){
+  activities[0].activity = req.body.updatedActivity;
   res.send(activities);
 });
 
-app.listen (5050,function(){
-  console.log("Listening on localhost port 5050");
+app.post("/delete", function(req, res){
+  activities.splice(req.body.number, 1);
+  res.send(activities);
+});
+
+const port = process.env.PORT || 5000;
+
+app.listen (port,function(){
+  console.log(`Listening on ${port}`);
 });
